@@ -34,5 +34,8 @@ git clone https://github.com/microsoft/Azure-Kinect-Sensor-SDK
 sudo cp /tmp/Azure-Kinect-Sensor-SDK/scripts/99-k4a.rules /etc/udev/rules.d/
 sudo rm -r /tmp/Azure-Kinect-Sensor-SDK
 
+# Install ROS packages for rtabmap demo
+sudo apt-get install -y \
+    ros-${ROS_DISTRO}-rtabmap-ros
 
 echo "╚══╣ Install: k4a-tools for Azure Kinect (FINISHED) ╠══╝"
