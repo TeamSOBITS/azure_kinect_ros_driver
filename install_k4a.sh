@@ -28,5 +28,10 @@ sudo apt-get install -y \
     libk4abt1.0-dev \
     k4a-tools=1.3.0
 
+# Add rules file
+cd /tmp
+git clone https://github.com/microsoft/Azure-Kinect-Sensor-SDK
+sudo cp /tmp/Azure-Kinect-Sensor-SDK/scripts/99-k4a.rules /etc/udev/rules.d/
+
 
 echo "╚══╣ Install: k4a-tools for Azure Kinect (FINISHED) ╠══╝"
