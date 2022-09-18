@@ -46,7 +46,7 @@ public:
   k4a::image transformed_depth_image_;
 
   std::string tf_prefix_ = "";
-  std::string camera_base_frame_ = "camera_base";
+  std::string camera_base_frame_ = "visor_base_link";
   std::string rgb_camera_frame_ = "rgb_camera_link";
   std::string depth_camera_frame_ = "depth_camera_link";
   std::string imu_frame_ = "imu_link";

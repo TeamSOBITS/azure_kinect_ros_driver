@@ -37,7 +37,11 @@ void K4ACalibrationTransformData::initialize(const k4a::playback& k4a_playback_h
 void K4ACalibrationTransformData::initialize(const K4AROSDeviceParams params)
 {
   k4a_transformation_ = k4a::transformation(k4a_calibration_);
-  tf_prefix_ = params.tf_prefix;
+  tf_prefix_          = params.tf_prefix;
+  camera_base_frame_  = params.camera_base_frame;
+  rgb_camera_frame_   = params.rgb_camera_frame;
+  depth_camera_frame_ = params.depth_camera_frame;
+  imu_frame_          = params.imu_frame;
 
   print();
 
