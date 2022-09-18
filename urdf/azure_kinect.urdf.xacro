@@ -7,13 +7,13 @@ Reference: https://learn.microsoft.com/en-us/azure/kinect-dk/media/resources/har
   <xacro:macro name="azure_kinect" params="parent tf_prefix:=azure *origin add_cover:=false">
     <xacro:property name="M_PI" value="3.1415926535897931" />
 
-    <joint name="${tf_prefix}camera_base_joint" type="fixed">
+    <joint name="${tf_prefix}plug_base_joint" type="fixed">
       <xacro:insert_block name="origin" />
       <parent link="${parent}"/>
-      <child link="${tf_prefix}camera_base_link" />
+      <child link="${tf_prefix}plug_base_link" />
     </joint>
 
-    <link name="${tf_prefix}camera_base_link">
+    <link name="${tf_prefix}plug_base_link">
       <visual>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
         <geometry>
@@ -37,7 +37,7 @@ Reference: https://learn.microsoft.com/en-us/azure/kinect-dk/media/resources/har
 
 
     <joint name="${tf_prefix}visor_base_joint" type="fixed">
-      <parent link="${tf_prefix}camera_base_link" />
+      <parent link="${tf_prefix}plug_base_link" />
       <child link="${tf_prefix}visor_base_link" />
       <origin xyz="0.062 0.0 0.005" rpy="0.0 0.0 0.0" />
     </joint>
@@ -64,13 +64,13 @@ Reference: https://learn.microsoft.com/en-us/azure/kinect-dk/media/resources/har
 
 
     <xacro:if value="${add_cover}">
-      <joint name="${tf_prefix}camera_cover_joint" type="fixed">
-        <parent link="${tf_prefix}camera_base_link" />
-        <child link="${tf_prefix}camera_cover_link" />
+      <joint name="${tf_prefix}_cover_joint" type="fixed">
+        <parent link="${tf_prefix}plug_base_link" />
+        <child link="${tf_prefix}_cover_link" />
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
       </joint>
 
-      <link name="${tf_prefix}camera_cover_link">
+      <link name="${tf_prefix}_cover_link">
         <visual>
           <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
           <geometry>

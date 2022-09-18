@@ -64,12 +64,12 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        azure_camera_base_link:
+        azure__cover_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        azure_camera_cover_link:
+        azure_plug_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -93,9 +93,9 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        azure_camera_base_link:
+        azure__cover_link:
           Value: true
-        azure_camera_cover_link:
+        azure_plug_base_link:
           Value: true
         azure_visor_base_link:
           Value: true
@@ -109,8 +109,8 @@ Visualization Manager:
       Show Names: false
       Tree:
         base_link:
-          azure_camera_base_link:
-            azure_camera_cover_link:
+          azure_plug_base_link:
+            azure__cover_link:
               {}
             azure_visor_base_link:
               {}
@@ -160,9 +160,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.35539817810058594
+      Pitch: 0.38539814949035645
       Target Frame: <Fixed Frame>
-      Yaw: 0.8503965139389038
+      Yaw: 0.8903964757919312
     Saved: ~
 Window Geometry:
   Displays:
