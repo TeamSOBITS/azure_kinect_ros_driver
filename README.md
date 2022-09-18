@@ -1,5 +1,8 @@
 # Azure Kinect ROS Driver
 
+> **Warning**
+> ROS Noeticの場合、ROS Melodicのコンテナ上でインストールし、トピック通信より、RGBD情報をROS Noeticのコンテナから受け取る。
+
 ## 参考DOCファイル（公式サイト）
 https://github.com/microsoft/Azure_Kinect_ROS_Driver
 
@@ -10,9 +13,6 @@ https://learn.microsoft.com/en-us/windows-server/administration/linux-package-re
 - Ubuntu 18.04
 - ROS Melodic
 - ROS Noetic（未対応）
-
-> *Note*
-> ROS Noeticの場合、ROS Melodicのコンテナ上でインストールし、トピック通信より、RGBD情報をROS Noeticのコンテナから受け取る。
 
 ## インストール
 
