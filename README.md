@@ -1,59 +1,72 @@
 # Azure Kinect ROS Driver
 
-This project is a node which publishes sensor data from the [Azure Kinect Developer Kit](https://azure.microsoft.com/en-us/services/kinect-dk/) to the [Robot Operating System (ROS)](http://www.ros.org/). Developers working with ROS can use this node to connect an Azure Kinect Developer Kit to an existing ROS installation.
+## 参考DOCファイル（公式サイト）
+https://github.com/microsoft/Azure_Kinect_ROS_Driver
 
-This repository uses the [Azure Kinect Sensor SDK](https://github.com/microsoft/Azure-Kinect-Sensor-SDK) to communicate with the Azure Kinect DK. It supports both Linux and Windows installations of ROS.
+## セットアップ手順（公式サイト）
+https://learn.microsoft.com/en-us/windows-server/administration/linux-package-repository-for-microsoft-software
 
-[![Build Status](https://dev.azure.com/ms/Azure_Kinect_ROS_Driver/_apis/build/status/microsoft.Azure_Kinect_ROS_Driver?branchName=melodic)](https://dev.azure.com/ms/Azure_Kinect_ROS_Driver/_build/latest?definitionId=166&branchName=melodic)
+## 動作環境
+- Ubuntu 18.04
+- ROS Melodic
+- ROS Noetic（未対応）
 
-## Features
+> *Note*
+> ROS Noeticの場合、ROS Melodicのコンテナ上でインストールし、トピック通信より、RGBD情報をROS Noeticのコンテナから受け取る。
 
-This ROS node outputs a variety of sensor data, including:
+## インストール
 
-- A PointCloud2, optionally colored using the color camera
-- Raw color, depth and infrared Images, including CameraInfo messages containing calibration information
-- Rectified depth Images in the color camera resolution
-- Rectified color Images in the depth camera resolution
-- The IMU sensor stream
-- A TF2 model representing the extrinsic calibration of the camera
+```
+cd ~/catkin_ws/src/
+https://github.com/TeamSOBITS/azure_kinect_ros_driver
+cd azure_kinect_ros_driver
+bash install.sh
+```
 
-The camera is fully configurable using a variety of options which can be specified in ROS launch files or on the command line.
+## install.shの中身
 
-However, this node does ***not*** expose all the sensor data from the Azure Kinect Developer Kit hardware. It does not provide access to:
+``` bash
+# Install dependencies
+sudo apt-get update
+sudo apt install -y \
+    software-properties-common \
+    curl \
+    dialog
 
-- Microphone array
+# Add Microsoft’s official GPG key (Use 18.04 for 20.04)
+curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+sudo apt-add-repository https://packages.microsoft.com/ubuntu/18.04/prod
 
-For more information about how to use the node, please see the [usage guide](docs/usage.md).
+# Set up the stable repository
+curl -sSL https://packages.microsoft.com/config/ubuntu/18.04/prod.list | sudo tee /etc/apt/sources.list.d/microsoft-prod.list
 
-## Status
+# Install the latest stable version of k4a
+sudo apt-get update
 
-This code is provided as a starting point for using the Azure Kinect Developer Kit with ROS. Community developed features are welcome.
+sudo apt-get install -y \
+    libk4a1.3-dev \
+    libk4abt1.0-dev \
+    k4a-tools=1.3.0
 
-For information on how to contribute, please see our [contributing guide](CONTRIBUTING.md).
+# Add rules file
+wget https://raw.githubusercontent.com/microsoft/Azure-Kinect-Sensor-SDK/develop/scripts/99-k4a.rules
+sudo mv 99-k4a.rules /etc/udev/rules.d/
 
-## Building
+# Install ROS packages for rtabmap demo
+sudo apt-get install -y \
+    ros-${ROS_DISTRO}-rtabmap-ros
+```
 
-The Azure Kinect ROS Driver uses catkin to build. For instructions on how to build the project please see the 
-[building guide](docs/building.md).
+## k4aviewer＆ROSパッケージの起動
+``` bash
+#k4aviewer
+k4aviewer
+```
 
-## Join Our Developer Program
+``` bash
+#ROSパッケージ
+roslaunch azure_kinect_ros_driver driver.launch
+```
 
-Complete your developer profile [here](https://aka.ms/iwantmr) to get connected with our Mixed Reality Developer Program. You will receive the latest on our developer tools, events, and early access offers.
-
-## Code of Conduct
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
-## Reporting Security Issues
-Security issues and bugs should be reported privately, via email, to the
-Microsoft Security Response Center (MSRC) at <[secure@microsoft.com](mailto:secure@microsoft.com)>.
-You should receive a response within 24 hours. If for some reason you do not, please follow up via
-email to ensure we received your original message. Further information, including the
-[MSRC PGP](https://technet.microsoft.com/en-us/security/dn606155) key, can be found in the
-[Security TechCenter](https://technet.microsoft.com/en-us/security/default).
-
-## License
-
-[MIT License](LICENSE)
+## Tips
+[Azure Kinect SDK (K4A)](https://github.com/microsoft/Azure-Kinect-Sensor-SDK)
