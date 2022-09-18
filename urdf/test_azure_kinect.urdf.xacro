@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<robot name="azure_kinect" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find azure_kinect_ros_driver)/urdf/azure_kinect.urdf.xacro" />
+
+  <link name="base_link" />
+
+  <xacro:azure_kinect parent="base_link" tf_prefix="$(arg tf_prefix)" add_cover="$(arg add_cover)">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </xacro:azure_kinect>
+
+</robot>
