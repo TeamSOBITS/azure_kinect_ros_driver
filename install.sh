@@ -5,8 +5,6 @@ echo "╔══╣ Install: k4a-tools for Azure Kinect (STARTING) ╠══╗"
 
 
 # Install dependencies
-arch=amd64
-
 sudo apt-get update
 sudo apt install -y \
     software-properties-common \
