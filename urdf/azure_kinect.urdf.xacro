@@ -66,11 +66,11 @@ Reference: https://learn.microsoft.com/en-us/azure/kinect-dk/media/resources/har
     <xacro:if value="${add_cover}">
       <joint name="${tf_prefix}_cover_joint" type="fixed">
         <parent link="${tf_prefix}plug_base_link" />
-        <child link="${tf_prefix}_cover_link" />
+        <child link="${tf_prefix}cover_link" />
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
       </joint>
 
-      <link name="${tf_prefix}_cover_link">
+      <link name="${tf_prefix}cover_link">
         <visual>
           <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
           <geometry>
