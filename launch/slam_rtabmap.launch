@@ -6,12 +6,9 @@ Licensed under the MIT License.
 <launch>
   <arg name="tf_prefix"          default="azure_" />                <!-- Prefix added to tf frame IDs. It typically contains a trailing '_'. DO NOT USE EMPTY-->
   <arg name="camera_base_frame"  default="visor_base_link" />
-  <arg name="rgb_camera_frame"   default="rgb_camera_link" />
-  <arg name="depth_camera_frame" default="depth_camera_link" />
-  <arg name="imu_frame"          default="imu_link" />
 
   <param name="robot_description"
-      command="xacro $(find azure_kinect_ros_driver)/urdf/azure_kinect.urdf.xacro tf_prefix:=$(arg tf_prefix)" />
+    command="xacro $(find azure_kinect_ros_driver)/urdf/test_azure_kinect.urdf.xacro tf_prefix:=$(arg tf_prefix) add_cover:=$(arg add_cover)" />
 
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
