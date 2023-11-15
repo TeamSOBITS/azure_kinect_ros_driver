@@ -21,9 +21,11 @@ Reference: https://learn.microsoft.com/en-us/azure/kinect-dk/media/resources/har
         </geometry>
       </visual>
       <collision>
-        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <origin xyz="${0.0327+0.0066/2-0.0994/2} 0.0 ${0.0222/2}" rpy="0.0 0.0 0.0" />
+        <!-- <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" /> -->
         <geometry>
-          <mesh filename="package://azure_kinect_ros_driver/meshes/akdk_camera.dae" />
+          <box size="0.0994 0.09637 0.0222" />
+          <!-- <mesh filename="package://azure_kinect_ros_driver/meshes/akdk_camera.dae" /> -->
         </geometry>
       </collision>
       <inertial>
@@ -42,7 +44,14 @@ Reference: https://learn.microsoft.com/en-us/azure/kinect-dk/media/resources/har
       <origin xyz="0.062 0.0 0.005" rpy="0.0 0.0 0.0" />
     </joint>
 
-    <link name="${tf_prefix}visor_base_link" />
+    <link name="${tf_prefix}visor_base_link">
+      <collision>
+        <origin xyz="-${0.026/2} 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <geometry>
+          <box size="0.026 0.103 0.039" />
+        </geometry>
+      </collision>
+    </link>
 
 
     <!-- <joint name="${tf_prefix}depth_optical_joint" type="fixed">
