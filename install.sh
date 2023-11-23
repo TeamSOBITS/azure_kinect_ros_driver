@@ -36,6 +36,9 @@ sudo dpkg -i k4a-tools_1.4.1_amd64.deb
 # Remove deb files
 sudo rm *.deb
 
+# Replace k4aConfig.cmake
+sudo sed -i 's/find_dependency(k4a 1.4 REQUIRED)/find_dependency(k4a 1.4.1 REQUIRED)/g' /usr/lib/cmake/k4abt/k4abtConfig.cmake
+
 # Add rules file
 wget https://raw.githubusercontent.com/microsoft/Azure-Kinect-Sensor-SDK/develop/scripts/99-k4a.rules
 sudo mv 99-k4a.rules /etc/udev/rules.d/
