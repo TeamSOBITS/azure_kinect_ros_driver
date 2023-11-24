@@ -27,26 +27,13 @@
     <li>
     　<a href="#実行・操作方法">実行・操作方法</a>
       <ul>
-        <li><a href="#移動機構のみを使用する場合">移動機構のみを使用する場合</a></li>
+        <li><a href="#動作確認">動作確認</a></li>
         <li><a href="#Rviz上の可視化">Rviz上の可視化</a></li>
+        <li><a href="#デモ：骨格検出">デモ：骨格検出</a></li>
+        <li><a href="#デモ：RtabMap">デモ：RtabMap</a></li>
       </ul>
     </li>
     <li>
-    　<a href="#ソフトウェア">ソフトウェア</a>
-      <ul>
-        <li><a href="#ジョイントコントローラ">ジョイントコントローラ</a></li>
-        <li><a href="#ホイルコントローラ">ホイルコントローラ</a></li>
-      </ul>
-    </li>
-    <li>
-    　<a href="#ハードウェア">ハードウェア</a>
-      <ul>
-        <li><a href="#パーツのダウンロード方法">パーツのダウンロード方法</a></li>
-        <li><a href="#ロボットの組み立て">ロボットの組み立て</a></li>
-        <li><a href="#ロボットの特徴">ロボットの特徴</a></li>
-        <li><a href="#部品リスト（BOM）">部品リスト（BOM）</a></li>
-      </ul>
-    </li>
     <li><a href="#マイルストーン">マイルストーン</a></li>
     <!-- <li><a href="#contributing">Contributing</a></li> -->
     <!-- <li><a href="#license">License</a></li> -->
