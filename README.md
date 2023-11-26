@@ -25,12 +25,12 @@
       </ul>
     </li>
     <li>
-    　<a href="#実行・操作方法">実行・操作方法</a>
+    　<a href="#実行操作方法">実行・操作方法</a>
       <ul>
         <li><a href="#動作確認">動作確認</a></li>
         <li><a href="#Rviz上の可視化">Rviz上の可視化</a></li>
-        <li><a href="#デモ：骨格検出">デモ：骨格検出</a></li>
-        <li><a href="#デモ：RtabMap">デモ：RtabMap</a></li>
+        <li><a href="#デモ骨格検出">デモ：骨格検出</a></li>
+        <li><a href="#デモRtabMap">デモ：RtabMap</a></li>
       </ul>
     </li>
     <li>

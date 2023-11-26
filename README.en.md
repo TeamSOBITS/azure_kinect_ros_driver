@@ -29,8 +29,8 @@
       <ul>
         <li><a href="#operational-test">Operational Test</a></li>
         <li><a href="#visualization-on-rviz">Visualization on Rviz</a></li>
-        <li><a href="#demo:-skeleton-recognition">Demo: Skeleton Recognition</a></li>
-        <li><a href="#demo:-rtabMap">Demo: RtabMap</a></li>
+        <li><a href="#demo-skeleton-recognition">Demo: Skeleton Recognition</a></li>
+        <li><a href="#demo-rtabMap">Demo: RtabMap</a></li>
       </ul>
     </li>
     <li>
