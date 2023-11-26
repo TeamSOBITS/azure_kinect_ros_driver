@@ -162,6 +162,7 @@ To check if Azure Kinect ROS Driver has been successfully installed, run `k4avie
 
 
 ### Visualization on Rviz
+
 As a preliminary step to running the actual device, Azure Kinect DK can be visualized on Rviz to display the camera configuration.
 
 ```sh
