@@ -47,7 +47,7 @@
 ## 概要
 
 Microsoftが作成した[Azure Kinect ROS Driver](https://github.com/microsoft/Azure_Kinect_ROS_Driver)を基に，`ROS Noetic`にも対応させたレポジトリです．
-また，`URDF`ファイルが更新され，実機に疑わしくないモデルに発展させたものでもあります．
+さらに，実際のカメラの特性に忠実で，更新された`URDF`ファイルをサポートしています．
 
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p>
 
@@ -57,6 +57,9 @@ Microsoftが作成した[Azure Kinect ROS Driver](https://github.com/microsoft/A
 ## セットアップ
 
 ここで，本レポジトリのセットアップ方法について説明します．
+
+<p align="right">(<a href="#readme-top">上に戻る</a>)</p>
+
 
 ### 環境条件
 
@@ -69,6 +72,9 @@ Microsoftが作成した[Azure Kinect ROS Driver](https://github.com/microsoft/A
 
 > [!NOTE]
 > `Ubuntu`や`ROS`のインストール方法に関しては，[SOBIT Manual](https://github.com/TeamSOBITS/sobits_manual#%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)に参照してください．
+
+<p align="right">(<a href="#readme-top">上に戻る</a>)</p>
+
 
 ### インストール方法
 
@@ -104,7 +110,6 @@ Microsoftが作成した[Azure Kinect ROS Driver](https://github.com/microsoft/A
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p>
 
 
-
 <!-- 実行・操作方法 -->
 ## 実行・操作方法
 
@@ -121,6 +126,7 @@ Microsoftが作成した[Azure Kinect ROS Driver](https://github.com/microsoft/A
     <arg name="open_rviz"         default="true"/>
     ...
    ```
+
 > [!NOTE]
 > 使用したい機能に応じて，`true`か`false`かに書き換えてください．
 
@@ -130,7 +136,7 @@ Microsoftが作成した[Azure Kinect ROS Driver](https://github.com/microsoft/A
    ```
 
 > [!NOTE]
-> カメラのパラメータを変更した場合は，[usage.md](docs/usage.md)を参照してください．
+> カメラのパラメータを変更する場合は，[usage.md](docs/usage.md)を参照してください．
 
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p>
 
@@ -199,9 +205,9 @@ Azure Kinect ROS Driverがデフォルトとして用意しているRtabMapの�
 <!-- マイルストーン -->
 ## マイルストーン
 
-- [ ] OSS
-    - [ ] ドキュメンテーションの充実
-    - [-] install.shの更新
+- [x] OSS
+    - [x] ドキュメンテーションの充実
+    - [x] [install.sh](install.sh)の更新
 
 現時点のバッグや新規機能の依頼を確認するために[Issueページ][license-url] をご覧ください．
 
@@ -225,14 +231,12 @@ Don't forget to give the project a star! Thanks again!
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p> -->
 
 
-
 <!-- LICENSE -->
 <!-- ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more NOTErmation.
 
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p> -->
-
 
 
 <!-- 参考文献 -->
@@ -259,4 +263,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more NOTErmation.
 [issues-shield]: https://img.shields.io/github/issues/TeamSOBITS/azure_kinect_ros_driver.svg?style=for-the-badge
 [issues-url]: https://github.com/TeamSOBITS/azure_kinect_ros_driver/issues
 [license-shield]: https://img.shields.io/github/license/TeamSOBITS/azure_kinect_ros_driver.svg?style=for-the-badge
-[license-url]: https://github.com/TeamSOBITS/azure_kinect_ros_driver/blob/master/LICENSE
+[license-url]: LICENSE
