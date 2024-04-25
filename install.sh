@@ -30,7 +30,6 @@ echo 'libk4abt1.1 libk4abt1.1/accepted-eula-hash string 03a13b63730639eeb6626d24
 echo 'libk4abt1.1 libk4abt1.1/accept-eula boolean true' | sudo debconf-set-selections
 sudo dpkg -i libk4abt1.1_1.1.2_amd64.deb
 sudo dpkg -i libk4abt1.1-dev_1.1.2_amd64.deb
-
 sudo dpkg -i k4a-tools_1.4.1_amd64.deb
 
 # Remove deb files
