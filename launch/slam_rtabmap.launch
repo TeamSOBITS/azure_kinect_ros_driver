@@ -6,6 +6,7 @@ Licensed under the MIT License.
 <launch>
   <arg name="tf_prefix"          default="azure_" />                <!-- Prefix added to tf frame IDs. It typically contains a trailing '_'. DO NOT USE EMPTY-->
   <arg name="camera_base_frame"  default="visor_base_link" />
+  <arg name="add_cover"          default="true" />
 
   <param name="robot_description"
     command="xacro $(find azure_kinect_ros_driver)/urdf/test_azure_kinect.urdf.xacro tf_prefix:=$(arg tf_prefix) add_cover:=$(arg add_cover)" />
@@ -49,6 +50,7 @@ Licensed under the MIT License.
       <param name="rgb_point_cloud"   value="false" />
       <param name="required"          value="true" />
       <param name="imu_rate_target"   value="100" />
+      <param name="tf_prefix"         type="string" value="$(arg tf_prefix)" />
 
     </node>
 
@@ -60,7 +62,7 @@ Licensed under the MIT License.
     <arg name="depth_topic"        value="/k4a/depth/image_rect" />
     <arg name="camera_info_topic"  value="/k4a/depth/camera_info" />
     <arg name="approx_sync"        value="true" />
-    <arg name="frame_id"           value="camera_base" />
+    <arg name="frame_id"           value="azure_camera_base" />
     <arg name="args"               value="--delete_db_on_start --Odom/ResetCountdown 2" />
   </include>
 
