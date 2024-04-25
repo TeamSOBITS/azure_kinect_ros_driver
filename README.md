@@ -209,7 +209,7 @@ Azure Kinect ROS Driverがデフォルトとして用意しているRtabMapの�
     - [x] ドキュメンテーションの充実
     - [x] [install.sh](install.sh)の更新
 
-現時点のバッグや新規機能の依頼を確認するために[Issueページ][license-url] をご覧ください．
+現時点のバッグや新規機能の依頼を確認するために[Issueページ][issues-url] をご覧ください．
 
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p>
 
