@@ -24,8 +24,8 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-echo 'export PATH=$PATH:/home/sobits/colcon_ws/install/K4A/bin' >> ~/.bashrc
-echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu/libk4a1.4' >> ~/.bashrc
+echo "export PATH=\$PATH:/home/\$USER/colcon_ws/install/K4A/bin" >> ~/.bashrc
+echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu/libk4a1.4" >> ~/.bashrc
 source ~/.bashrc
 
 echo "Installation completed."
