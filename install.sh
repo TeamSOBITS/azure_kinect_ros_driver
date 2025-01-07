@@ -5,17 +5,9 @@ echo "Starting the installation..."
 cd ~/colcon_ws/src
 
 git clone https://github.com/TeamSOBITS/azure_kinect_sensor_sdk.git
-if [ $? -ne 0 ]; then
-  echo "Failed to clone the repository. Exiting..."
-  exit 1
-fi
 
 cd azure_kinect_sensor_sdk
-
-if [ ! -f install.sh ]; then
-  echo "install.sh not found. Exiting..."
-  exit 1
-fi
+bash install.sh
 
 chmod +x install.sh
 ./install.sh
