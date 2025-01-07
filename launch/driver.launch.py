@@ -75,7 +75,7 @@ def generate_launch_description():
         description="The format of RGB camera. Valid options: bgra, jpeg"),
     DeclareLaunchArgument(
         'color_resolution',
-        default_value="1536P",
+        default_value="720P",
         description="Resolution at which to run the color camera. Valid options: 720P, 1080P, 1440P, 1536P, 2160P, 3072P"),
     DeclareLaunchArgument(
         'fps',
