@@ -1,62 +1,117 @@
 <?xml version="1.0"?>
 <!-- 
- Copyright (c) Microsoft Corporation. All rights reserved.
- Licensed under the MIT License.
+Reference: https://learn.microsoft.com/en-us/azure/kinect-dk/media/resources/hardware-specs-media/dimensions.png
  -->
 
-<robot name="azure-kinect" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <material name="black">
-    <color rgba="0. 0. 0. 1" />
-  </material>
-  <material name="dark_grey">
-    <color rgba="0.1 0.1 0.1 1" />
-  </material>
-  <material name="grey">
-    <color rgba="0.6 0.6 0.6 1" />
-  </material>
-  <material name="white">
-    <color rgba="0.9 0.9 0.9 1" />
-  </material>
+<robot name="azure_kinect" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="azure_kinect" params="parent tf_prefix:=azure *origin add_cover:=false">
+    <xacro:property name="M_PI" value="3.14159" />
 
-  <link name="camera_body">
-    <visual>
-      <origin xyz="0. 0. 0." />
-      <geometry>
-        <box size="0.0994 0.0996 0.023" />
-      </geometry>
-      <material name="white" />
-    </visual>
-  </link>
+    <joint name="${tf_prefix}plug_base_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${tf_prefix}plug_base_link" />
+    </joint>
 
-  <link name="camera_base">
-    <visual>
-      <origin xyz="-0.013 0. 0." />
-      <geometry>
-        <box size="0.026 0.103 0.039" />
-      </geometry>
-      <material name="grey" />
-    </visual>
-  </link>
+    <link name="${tf_prefix}plug_base_link">
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <geometry>
+          <mesh filename="file://$(find azure_kinect_ros_driver)/meshes/akdk_camera.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="${0.0327+0.0066/2-0.0994/2} 0.0 ${0.0222/2}" rpy="0.0 0.0 0.0" />
+        <!-- <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" /> -->
+        <geometry>
+          <box size="0.0994 0.09637 0.0222" />
+          <!-- <mesh filename="package://azure_kinect_ros_driver/meshes/akdk_camera.dae" /> -->
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="${0.0327+0.0066/2-0.0994/2} 0.0 ${0.0222/2}" rpy="0.0 0.0 0.0" />
+        <mass value="0.440" />
+        <inertia ixx="${1/12*0.440*(0.0994**2 +0.0222**2)}"  ixy="0.0" ixz="0.0"
+                 iyy="${1/12*0.440*(0.09637**2+0.0222**2)}"  iyz="0.0"
+                 izz="${1/12*0.440*(0.0994**2 +0.09637**2)}" />
+        <!-- <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                iyy="1.0" iyz="0.0"
+                izz="1.0" /> -->
+      </inertial>
+    </link>
 
-  <link name="camera_visor">
-    <visual>
-      <origin xyz="-0.0128 0. 0." />
-      <geometry>
-        <box size="0.026 0.101 0.037" />
-      </geometry>
-      <material name="black" />
-    </visual>
-  </link>
 
-  <joint name="camera_base_to_body" type="fixed">
-    <parent link="camera_base" />
-    <child link="camera_body" />
-    <origin xyz="-0.0757 0. 0.008" rpy="0. 0. 0." />
-  </joint>
+    <joint name="${tf_prefix}visor_base_joint" type="fixed">
+      <parent link="${tf_prefix}plug_base_link" />
+      <child link="${tf_prefix}visor_base_link" />
+      <origin xyz="0.062 0.0 0.005" rpy="0.0 0.0 0.0" />
+    </joint>
 
-  <joint name="camera_base_to_visor" type="fixed">
-    <parent link="camera_base" />
-    <child link="camera_visor" />
-    <origin xyz="0. 0. 0." rpy="0. 0. 0." />
-  </joint>
+    <link name="${tf_prefix}visor_base_link">
+      <collision>
+        <origin xyz="-${0.026/2} 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <geometry>
+          <box size="0.026 0.103 0.039" />
+        </geometry>
+      </collision>
+    </link>
+
+
+    <!-- <joint name="${tf_prefix}depth_optical_joint" type="fixed">
+      <parent link="${tf_prefix}visor_base_link" />
+      <child link="${tf_prefix}depth_optical_link" />
+      <origin xyz="0.0 0.0 0.0018" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <link name="${tf_prefix}depth_optical_link" /> -->
+
+
+    <!-- <joint name="${tf_prefix}rgb_optical_joint" type="fixed">
+      <parent link="${tf_prefix}visor_base_link" />
+      <child link="${tf_prefix}rgb_optical_link" />
+      <origin xyz="0.0 -0.0320 0.0" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <link name="${tf_prefix}rgb_optical_link" /> -->
+
+
+    <xacro:if value="${add_cover}">
+      <joint name="${tf_prefix}_cover_joint" type="fixed">
+        <parent link="${tf_prefix}plug_base_link" />
+        <child link="${tf_prefix}cover_link" />
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      </joint>
+
+      <link name="${tf_prefix}cover_link">
+        <visual>
+          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+          <geometry>
+            <mesh filename="file://$(find azure_kinect_ros_driver)/meshes/akdk_camera_cover.dae" />
+          </geometry>
+        </visual>
+        <collision>
+          <origin xyz="${-0.063163+0.0994/2} 0.0 ${-0.0045+0.03035/2}" rpy="0.0 0.0 0.0" />
+          <!-- <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" /> -->
+          <geometry>
+            <box size="0.0994 0.1064 0.03035" />
+            <!-- <mesh filename="package://azure_kinect_ros_driver/meshes/akdk_camera_cover.dae" /> -->
+          </geometry>
+        </collision>
+        <inertial>
+          <origin xyz="${-0.063163+0.0994/2} 0.0 ${-0.0045+0.03035/2}" rpy="0.0 0.0 0.0" />
+          <mass value="0.041" />
+          <inertia ixx="${1/12*0.041*(0.0994**2+0.03035**2)}" ixy="0.0" ixz="0.0"
+                   iyy="${1/12*0.041*(0.1064**2+0.03035**2)}" iyz="0.0"
+                   izz="${1/12*0.041*(0.0994**2+0.1064**2)}" />
+          <!-- <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                  iyy="1.0" iyz="0.0"
+                  izz="1.0" /> -->
+        </inertial>
+      </link>
+    </xacro:if>
+
+  </xacro:macro>
 </robot>
+
+
+
