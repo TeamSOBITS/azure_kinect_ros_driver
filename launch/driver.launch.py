@@ -49,6 +49,10 @@ def generate_launch_description():
 
     return LaunchDescription([
     DeclareLaunchArgument(
+        'namespace',
+        default_value="",
+        description="Enable or disable the depth camera"),
+    DeclareLaunchArgument(
         'overwrite_robot_description',
         default_value="true" ,
         description="Flag to publish a standalone azure_description instead of the default robot_description parameter."),
@@ -91,7 +95,7 @@ def generate_launch_description():
         description="Colorize the point cloud using the RBG camera. Requires color_enabled and depth_enabled"),
     DeclareLaunchArgument(
         'point_cloud_in_depth_frame',
-        default_value="false",
+        default_value="false", # true
         description="Whether the RGB pointcloud is rendered in the depth frame (true) or RGB frame (false). Will either match the resolution of the depth camera (true) or the RGB camera (false)."),
     DeclareLaunchArgument( # Not a parameter of the node, rather a launch file parameter
         'required',
@@ -139,6 +143,8 @@ def generate_launch_description():
         description="Delay subordinate camera off master camera by specified amount in usec."),
     launch_ros.actions.Node(
         package='azure_kinect_ros_driver',
+        namespace=launch.substitutions.LaunchConfiguration('namespace'),
+        name='camera_base',
         executable='node',
         output='screen',
         parameters=[
@@ -166,12 +172,14 @@ def generate_launch_description():
     launch_ros.actions.Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
+        namespace=launch.substitutions.LaunchConfiguration('namespace'),
         name='robot_state_publisher',
         parameters = [{'robot_description' : urdf}],
         condition=conditions.IfCondition(launch.substitutions.LaunchConfiguration("overwrite_robot_description"))),
     launch_ros.actions.Node(
         package='joint_state_publisher',
         executable='joint_state_publisher',
+        namespace=launch.substitutions.LaunchConfiguration('namespace'),
         name='joint_state_publisher',
         arguments=[urdf_path],
         condition=conditions.IfCondition(launch.substitutions.LaunchConfiguration("overwrite_robot_description"))),
@@ -179,6 +187,7 @@ def generate_launch_description():
     launch_ros.actions.Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
+        namespace=launch.substitutions.LaunchConfiguration('namespace'),
         name='robot_state_publisher',
         parameters = [{'robot_description' : urdf}],
         remappings=remappings,
@@ -186,6 +195,7 @@ def generate_launch_description():
     launch_ros.actions.Node(
         package='joint_state_publisher',
         executable='joint_state_publisher',
+        namespace=launch.substitutions.LaunchConfiguration('namespace'),
         name='joint_state_publisher',
         arguments=[urdf_path],
         remappings=remappings,

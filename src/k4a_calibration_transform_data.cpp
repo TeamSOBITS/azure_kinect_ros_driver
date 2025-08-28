@@ -40,7 +40,9 @@ void K4ACalibrationTransformData::initialize(const k4a::playback& k4a_playback_h
 void K4ACalibrationTransformData::initialize(const K4AROSDeviceParams& params)
 {
   k4a_transformation_ = k4a::transformation(k4a_calibration_);
-  tf_prefix_ = params.tf_prefix;
+  // tf_prefix_ = params.tf_prefix;
+  if (std::string(this->get_namespace()).substr(1) == "") tf_prefix_ = "";
+  else tf_prefix_ = std::string(this->get_namespace()).substr(1) + "/";
 
   print();
 
