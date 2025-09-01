@@ -54,9 +54,5 @@ fi
 wget https://raw.githubusercontent.com/microsoft/Azure-Kinect-Sensor-SDK/develop/scripts/99-k4a.rules
 sudo mv 99-k4a.rules /etc/udev/rules.d/
 
-# 5. ROS2 packages (optional: rtabmap demo, camera-info-manager)
-sudo apt install -y \
-  ros-$ROS_DISTRO-rtabmap-ros \
-  ros-$ROS_DISTRO-camera-info-manager
 
 echo "╚══╣ Install: Azure Kinect ROS2 Driver (FINISHED) ╠══╝"
