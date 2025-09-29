@@ -16,7 +16,9 @@ sudo apt install -y \
   build-essential \
   cmake \
   ninja-build \
-  pkg-config
+  pkg-config \
+  ros-humble-xacro \
+  ros-humble-joint-state-publisher
 
 # 2. Download Azure Kinect packages (from Microsoft Ubuntu 18.04 repo)
 if dpkg -l | grep -q libk4a1.4; then
