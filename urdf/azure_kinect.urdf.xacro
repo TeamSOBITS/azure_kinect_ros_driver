@@ -57,22 +57,22 @@ Reference: https://learn.microsoft.com/en-us/azure/kinect-dk/media/resources/har
     </link>
 
 
-    <!-- <joint name="${tf_prefix}depth_optical_joint" type="fixed">
+    <joint name="${tf_prefix}depth_optical_joint" type="fixed">
       <parent link="${tf_prefix}visor_base_link" />
       <child link="${tf_prefix}depth_optical_link" />
-      <origin xyz="0.0 0.0 0.0018" rpy="0.0 0.0 0.0" />
+      <origin xyz="0.0 0.0 0.0018" rpy="0.0 1.57 0.0" />
     </joint>
 
-    <link name="${tf_prefix}depth_optical_link" /> -->
+    <link name="${tf_prefix}depth_optical_link" />
 
 
-    <!-- <joint name="${tf_prefix}rgb_optical_joint" type="fixed">
+    <joint name="${tf_prefix}rgb_optical_joint" type="fixed">
       <parent link="${tf_prefix}visor_base_link" />
       <child link="${tf_prefix}rgb_optical_link" />
-      <origin xyz="0.0 -0.0320 0.0" rpy="0.0 0.0 0.0" />
+      <origin xyz="0.0 -0.0320 0.0" rpy="0.0 1.57 0.0" />
     </joint>
 
-    <link name="${tf_prefix}rgb_optical_link" /> -->
+    <link name="${tf_prefix}rgb_optical_link" />
 
 
     <xacro:if value="${add_cover}">
